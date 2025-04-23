@@ -6,7 +6,7 @@ from google.genai import types
 
 app = Flask(__name__)
 
-PROJECT_ID = "vibrant-bonus-457713-t6"
+PROJECT_ID = "app id"
 
 client = genai.Client(
    vertexai=True,
