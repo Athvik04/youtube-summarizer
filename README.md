@@ -1,58 +1,104 @@
-# Cloud Run Hello World with Cloud Code
+Gemini-Powered YouTube Summarizer
+Summarize YouTube videos instantly using Google's Gemini AI! This web app allows users to input a YouTube video URL and get an AI-generated summary using Google's powerful GenAI models.
 
-"Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) application that renders a simple webpage.
+🚀 Features
+🔗 Input any YouTube video URL
 
-For details on how to use this sample as a template in Cloud Code, read the documentation for Cloud Code for [VS Code](https://cloud.google.com/code/docs/vscode/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
+🧠 Summarization powered by Gemini (via Google GenAI SDK)
 
-### Table of Contents
-* [Getting Started with VS Code](#getting-started-with-vs-code)
-* [Getting Started with IntelliJ](#getting-started-with-intellij)
-* [Sign up for User Research](#sign-up-for-user-research)
+🌐 Flask-based web application
 
----
-## Getting Started with VS Code
+☁️ Deployed on Google Cloud Run
 
-### Run the app locally with the Cloud Run Emulator
-1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.  
-![image](./img/status-bar.png)
+✨ Optional additional prompts to customize summaries
 
-2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
-![image](./img/build-config.png)
+🧰 Tech Stack
+Frontend: HTML, CSS
 
-3. Click ‘Run’. Cloud Code begins building your image.
+Backend: Python, Flask
 
-4. View the build progress in the OUTPUT window. Once the build has finished, click on the URL in the OUTPUT window to view your live application.  
-![image](./img/cloud-run-url.png)
+AI Integration: Gemini via google-genai SDK
 
-5. To stop the application, click the stop icon on the Debug Toolbar.
+Deployment: Google Cloud Run
 
----
-## Getting Started with IntelliJ
+📝 Prerequisites
+A Google Cloud project with billing enabled
 
-### Run the app locally with the Cloud Run Emulator
+Python installed (for local testing)
 
-#### Define run configuration
+Basic knowledge of Python, Flask, and HTML
 
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
-![image](./img/edit-config.png)
+Familiarity with Google Cloud Shell and Vertex AI
 
-2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
-![image](./img/local-build-config.png)
+📦 Installation
+Clone or create the app using Google Cloud Shell
 
-#### Run the application
-1. Click the Run/Debug configurations dropdown and select 'Cloud Run: Run Locally'. Click the run icon.  
-![image](./img/config-run-locally.png)
+Use the Cloud Code plugin to generate a new Python Flask app
 
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services.  
-![image](./img/local-success.png)
+Enable APIs
 
----
-## Sign up for User Research
+bash
+Copy
+Edit
+gcloud services enable aiplatform.googleapis.com \
+                       run.googleapis.com \
+                       cloudbuild.googleapis.com \
+                       cloudresourcemanager.googleapis.com
+Set project
 
-We want to hear your feedback!
+bash
+Copy
+Edit
+gcloud config set project YOUR_PROJECT_ID
+Install dependencies
 
-The Cloud Code team is inviting our user community to sign-up to participate in Google User Experience Research. 
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+🔧 Configuration
+Add your Google Cloud Project ID in app.py under PROJECT_ID
 
-If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
+Ensure your environment is authorized to use Gemini models through Vertex AI
 
-[Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
+🖥️ Running Locally
+Run the app using:
+
+bash
+Copy
+Edit
+python app.py
+Preview the app in Cloud Shell using port 8080.
+
+☁️ Deploying to Cloud Run
+From the project root directory:
+
+bash
+Copy
+Edit
+gcloud run deploy --source .
+Give your service a name (e.g., youtube-summarizer)
+
+Choose region: us-central1
+
+Allow unauthenticated access for public use
+
+You’ll receive a public URL to access your deployed app!
+
+💡 Bonus Challenge
+Want more? Try modifying the app to:
+
+Upload local video files instead of YouTube links
+
+Add support for multiple languages
+
+Store summaries for later access
+
+🧹 Clean Up
+To avoid unnecessary charges:
+
+Delete your Cloud Run service from the console
+
+Or delete the entire project via the Manage Resources page in GCP
